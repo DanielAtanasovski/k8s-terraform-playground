@@ -1,0 +1,7 @@
+vault write auth/jwt/role/my-role \
+   role_type="jwt" \
+   bound_audiences="https://kubernetes.default.svc.cluster.local" \
+   user_claim="sub" \
+   bound_subject="system:serviceaccount:graf:busybox-account" \
+   policies="default" \
+   ttl="1h"
