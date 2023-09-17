@@ -3,4 +3,3 @@ https://developer.hashicorp.com/vault/tutorials/monitoring/troubleshooting-vault
 https://developer.hashicorp.com/vault/tutorials/kubernetes/vault-secrets-operator#install-vault-cluster
 
 https://github.com/tehcyx/terraform-provider-kind
-
