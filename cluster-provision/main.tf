@@ -20,13 +20,6 @@ terraform {
 provider "kind" {
 }
 
-provider "kubernetes" {
-  config_path = pathexpand(var.cluster_config_path)
-}
-
-provider "helm" {
-  config_path = pathexpand(var.cluster_config_path)
-}
 
 resource "kind_cluster" "default" {
   name           = "test-cluster"

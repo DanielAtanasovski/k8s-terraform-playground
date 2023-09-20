@@ -32,3 +32,10 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Cluster config output
+test-cluster-config
+
+# Terraform plan outputs
+*.helm_plan
+*.cluster_plan
