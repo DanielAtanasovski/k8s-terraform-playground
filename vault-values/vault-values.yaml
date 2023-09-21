@@ -3,6 +3,9 @@ server:
     enabled: true
     devRootToken: "root"
   logLevel: debug
+  service:
+    type: NodePort
+    nodePort: 30000
 
 injector:
   enabled: "false"

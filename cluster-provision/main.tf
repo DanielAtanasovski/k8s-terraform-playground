@@ -31,6 +31,12 @@ resource "kind_cluster" "default" {
 
     node {
       role = "control-plane"
+      extra_port_mappings {
+        container_port = 30000
+        host_port      = 30000
+        listen_address = "127.0.0.1"
+        protocol       = "TCP"
+      }
     }
 
     node {
