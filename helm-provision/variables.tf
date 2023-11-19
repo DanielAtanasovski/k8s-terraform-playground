@@ -9,3 +9,14 @@ variable "cluster_config_path" {
   description = "Cluster's kubeconfig location"
   default     = "~/.kube/config"
 }
+
+
+variable "github_username" {
+  type = string
+  sensitive = true
+}
+
+variable "github_token" {
+  type = string
+  sensitive = true
+}

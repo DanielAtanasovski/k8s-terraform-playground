@@ -10,10 +10,10 @@ destroy_cluster:
 
 # Provision helm charts / applications
 plan_helm:
-	cd helm-provision && terraform init && terraform plan -out .helm_plan
+	cd helm-provision && terraform init && terraform plan -var github_username=${GITHUB_USERNAME} -var github_token=${GITHUB_TOKEN} -out .helm_plan
 
 apply_helm:
-	cd helm-provision && terraform apply -auto-approve
+	cd helm-provision && terraform apply -var github_username=${GITHUB_USERNAME} -var github_token=${GITHUB_TOKEN} -auto-approve
 
 destroy_helm:
 	cd helm-provision && terraform destroy

@@ -31,11 +31,23 @@ resource "kind_cluster" "default" {
 
     node {
       role = "control-plane"
+
       extra_port_mappings {
-        container_port = 30000
-        host_port      = 30000
-        listen_address = "127.0.0.1"
-        protocol       = "TCP"
+        container_port = 80
+        host_port      = 8080
+      }
+
+      extra_port_mappings {
+        container_port = 443
+        host_port      = 8443
+      }
+
+      kubeadm_config_patches = [
+          "kind: InitConfiguration\nnodeRegistration:\n  kubeletExtraArgs:\n    node-labels: \"ingress-ready=true\"\n"
+      ]
+
+      labels = {
+        "ingress-ready" = "true"
       }
     }
 

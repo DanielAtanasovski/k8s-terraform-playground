@@ -39,3 +39,4 @@ test-cluster-config
 # Terraform plan outputs
 *.helm_plan
 *.cluster_plan
+.env

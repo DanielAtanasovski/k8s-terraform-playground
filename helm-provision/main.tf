@@ -22,6 +22,16 @@ provider "helm" {
   }
 }
 
+# Helm registry login to github
+resource "null_resource" "github_helm_login" {
+  triggers = {
+    always_run = timestamp()
+  }
+
+  provisioner "local-exec" {
+    command = "helm registry login ghcr.io -u ${var.github_username} -p ${var.github_token}"
+  }
+}
 
 # Provision Vault
 resource "helm_release" "vault" {
@@ -43,4 +53,18 @@ resource "helm_release" "vault-secrets-operator" {
   namespace        = "vault-secrets-operator"
 
   values = [file("../vault-values/vault-operator-values.yaml"), ]
+}
+
+# Provision Grafana Operator
+resource "helm_release" "grafana-operator" {
+  repository_username = var.github_username
+  repository_password = var.github_token
+
+  name              = "grafana-operator"
+  repository        = "oci://ghcr.io/grafana-operator/helm-charts/"
+  chart             = "grafana-operator"
+  version           = "v5.4.2"
+
+  create_namespace  = true
+  namespace = "grafana-operator"
 }
